@@ -51,7 +51,8 @@ class MyHash
       end
     end
 
-    "#{@new_hash.keys} and #{@new_hash.values}"
+    # "#{@new_hash.keys} and #{@new_hash.values}"
+    @new_hash
   end
 
 

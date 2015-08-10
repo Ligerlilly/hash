@@ -43,7 +43,9 @@ describe MyHash do
     it 'merges two hashes, returning a new hash with combined keys and values' do
       @test_hash.my_store('animal', 'chimp')
       @test_hash2.my_store('animal', 'giraffe')
-      expect(@test_hash.my_merge(@test_hash2)).to eq '["animal"] and ["giraffe"]'
+      @expected_hash = MyHash.new()
+      @expected_hash.my_store('animal', 'giraffe')
+      expect(@test_hash.my_merge(@test_hash2).values).to eq @expected_hash.values
     end
   end
 
