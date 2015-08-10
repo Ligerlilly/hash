@@ -31,5 +31,19 @@ describe MyHash do
     end
   end
 
+  describe '#my_length' do
+    it 'returns length of MyHash' do
+      @test_hash.my_store('animal', 'chimp')
+      expect(@test_hash.my_length).to eq 1
+    end
+  end
+
+  describe '#my_merge' do
+    it 'returns true is test_hash has value' do
+      @test_hash.my_store('animal', 'chimp')
+      expect(@test_hash.my_length).to eq 1
+    end
+  end
+
 
 end

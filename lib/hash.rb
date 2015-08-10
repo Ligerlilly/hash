@@ -24,4 +24,8 @@ class MyHash
     @value_array.include?(value)
   end
 
+  define_method(:my_length) do
+    @key_array.length
+  end
+
 end
