@@ -23,4 +23,13 @@ describe MyHash do
       expect(@test_hash.my_has_key?('animal')).to eq true
     end
   end
+
+  describe '#my_has_value?' do
+    it 'returns true is test_hash has value' do
+      @test_hash.my_store('animal', 'cat')
+      expect(@test_hash.my_has_value?('cat')).to eq true
+    end
+  end
+
+
 end

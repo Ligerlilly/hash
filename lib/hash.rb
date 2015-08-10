@@ -20,4 +20,8 @@ class MyHash
     @key_array.include?(key)
   end
 
+  define_method(:my_has_value?) do | value |
+    @value_array.include?(value)
+  end
+
 end
