@@ -36,22 +36,33 @@ class MyHash
     @value_array
   end
 
-
-  define_method(:my_merge) do | my_hash |
+  def my_merge(arg_hash, &block)
     @new_hash = MyHash.new
     for key in self.keys
       @new_hash.my_store(key, self.my_fetch(key))
     end
 
-    for key in my_hash.keys
-      if @new_hash.keys.include?(key)
-        @new_hash.values[@new_hash.keys.index(key)] = my_hash.my_fetch(key)
-      else
-        @new_hash.my_store(key, my_hash.my_fetch(key))
+    if block_given?
+      for key in arg_hash.keys
+        if @new_hash.keys.include?(key)
+          @new_hash.values[@new_hash.keys.index(key)] = block.call self.my_fetch(key), arg_hash.my_fetch(key)
+        else
+          @new_hash.my_store(key, arg_hash.my_fetch(key))
+        end
+      end
+    else
+
+
+
+      for key in arg_hash.keys
+        if @new_hash.keys.include?(key)
+          @new_hash.values[@new_hash.keys.index(key)] = arg_hash.my_fetch(key)
+        else
+          @new_hash.my_store(key, arg_hash.my_fetch(key))
+        end
       end
     end
 
-    # "#{@new_hash.keys} and #{@new_hash.values}"
     @new_hash
   end
 

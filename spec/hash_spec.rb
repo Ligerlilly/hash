@@ -47,6 +47,15 @@ describe MyHash do
       @expected_hash.my_store('animal', 'giraffe')
       expect(@test_hash.my_merge(@test_hash2).values).to eq @expected_hash.values
     end
+
+    it 'merges two hashes and takes an optional block to resovle conficts' do
+      @test_hash.my_store('animal', 'chimp')
+      @test_hash2.my_store('animal', 'giraffe')
+      @expected_hash = MyHash.new()
+      @expected_hash.my_store('animal', 'chimpgiraffe')
+      @block_hash = @test_hash.my_merge(@test_hash2) { | value1 , value2 | value1 + value2 }
+      expect(@block_hash.values).to eq @expected_hash.values
+    end
   end
 
 
