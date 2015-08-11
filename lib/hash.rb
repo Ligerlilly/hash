@@ -51,9 +51,6 @@ class MyHash
         end
       end
     else
-
-
-
       for key in arg_hash.keys
         if @new_hash.keys.include?(key)
           @new_hash.values[@new_hash.keys.index(key)] = arg_hash.my_fetch(key)
